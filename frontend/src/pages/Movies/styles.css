@@ -1,0 +1,46 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.movie-container {
+    background: #525252;
+    padding: 12px 15px 0 15px;
+}
+
+.movie-container h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.movie-container li {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.movie-container li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+}
+
+@media(min-width: 1200px) {
+    .movie-container {
+        padding: 40px 15px 0 40px;
+    }
+
+    .movie-container h1 {
+        font-size: 48px;
+    }
+
+    .movie-container li {
+        margin-bottom: 27px;
+    }
+
+    .movie-container li a {
+        font-size: 24px;
+    }
+}

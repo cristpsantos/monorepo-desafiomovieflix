@@ -1,0 +1,113 @@
+.feedback {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(102, 14, 14);
+    margin-top: 5px;
+}
+
+.name-user-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.reviews-container {
+    background: #525252;
+    padding: 17px 10px 0 10px;
+}
+
+.reviews-container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.015em;
+}
+
+.card-newreviews {
+    background: #6C6C6C;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    padding: 20px 10px;
+    margin-bottom: 18px;
+}
+
+.form-reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-reviews input {
+    height: 50px;
+    padding: 13px 10px;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+}
+
+.buttom-custom-review {
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 336px;
+    height: 60px;
+    font-weight: 700;
+    background: #FFC700;
+    border-radius: 4px;
+    border: none;
+    margin-top: 20px;
+}
+
+.card-reviews {
+    background: #6C6C6C;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    padding: 20px 10px;
+    margin-bottom: 18px;
+}
+
+.name-user {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.015em;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.review-users {
+    font-size: 16px;
+    letter-spacing: -0.015em;
+    color: #9E9E9E;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+
+.details-reviews {
+    margin-bottom: 14px;
+}
+
+.buttom-div-custom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(min-width: 1200px) {
+    .reviews-container {
+        padding: 36px 40px 0 40px; 
+    }
+
+    .reviews-container h1 {
+        font-size: 48px;
+    }
+
+    .card-newreviews {
+        padding: 40px 20px;
+    }
+
+    .card-reviews {
+        padding: 40px 20px;
+    }
+}
