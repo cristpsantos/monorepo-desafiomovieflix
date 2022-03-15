@@ -1,4 +1,5 @@
 import { AxiosRequestConfig } from "axios";
+import MovieCard from "components/MovieCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoviesPage } from "types/moviesPage";
@@ -15,7 +16,7 @@ const Movies = () => {
       withCredentials: true,
       params: {
         page: 0,
-        size: 12,
+        size: 4,
       },
     };
 
@@ -26,15 +27,24 @@ const Movies = () => {
   }, []);
   return (
     <div className="movie-container">
-      <h1>Tela de listagem de filmes</h1>
-      <ul>
-          <li key={page?.content[1].id}>
-            <Link to={"/movies/" + page?.content[1].id}>Acessar/{page?.content[1].title}/{page?.content[1].id}</Link>
-          </li>
-          <li key={page?.content[5].id}>
-            <Link to={"/movies/" + page?.content[5].id}>Acessar/{page?.content[5].title}/{page?.content[5].id}</Link>
-          </li>
-      </ul>
+      <div className="movie-filter">
+        <select>
+          <option value="Comédia">Comédia</option>
+          <option value="Comédia">Terror</option>
+          <option value="Comédia">Drama</option>
+        </select>
+      </div>
+      <div className="row">
+        {page?.content.map((movie) => {
+          return (
+            <div className="col-sm-6 col-xl-3" key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
