@@ -3,6 +3,12 @@
     padding: 20px 10px 0 10px;
 }
 
+.movie-container-main {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .movie-filter {
     background: #6C6C6C;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -11,4 +17,41 @@
     display: flex;
     padding: 5px 20px;
     margin-bottom: 25px;
+}
+
+@media(min-width: 576px) {
+    .movie-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media(min-width: 768px) {
+    .movie-container {
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .movie-item {
+        padding: 0;
+    }
+
+    .movie-filter {
+        margin-bottom: 40px;
+    }
+    
+}
+
+@media(min-width: 1200px) {
+    .movie-container-main {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .movie-container {
+        max-width: 1200px;
+    }
 }

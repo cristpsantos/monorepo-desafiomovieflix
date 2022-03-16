@@ -26,24 +26,26 @@ const Movies = () => {
     });
   }, []);
   return (
-    <div className="movie-container">
-      <div className="movie-filter">
-        <select>
-          <option value="Comédia">Comédia</option>
-          <option value="Comédia">Terror</option>
-          <option value="Comédia">Drama</option>
-        </select>
-      </div>
-      <div className="row">
-        {page?.content.map((movie) => {
-          return (
-            <div className="col-sm-6 col-xl-3" key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <MovieCard movie={movie} />
-              </Link>
-            </div>
-          );
-        })}
+    <div className="movie-container-main">
+      <div className="movie-container">
+        <div className="movie-filter">
+          <select>
+            <option value="Comédia">Comédia</option>
+            <option value="Comédia">Terror</option>
+            <option value="Comédia">Drama</option>
+          </select>
+        </div>
+        <div className="row">
+          {page?.content.map((movie) => {
+            return (
+              <div className="col-sm-6 col-xl-3 movie-items" key={movie.id}>
+                <Link to={`/movies/${movie.id}`}>
+                  <MovieCard movie={movie} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

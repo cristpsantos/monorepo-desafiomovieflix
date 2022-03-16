@@ -7,10 +7,6 @@
     box-sizing: border-box;
 }
 
-html {
-    background: #525252;
-}
-
 .buttom-custom {
     height: 60px;
     font-size: 20px;
@@ -19,4 +15,8 @@ html {
     border-radius: 4px;
     border: none;
     margin-top: 40px;
+}
+
+body {
+    background-color: #525252 !important;
 }
