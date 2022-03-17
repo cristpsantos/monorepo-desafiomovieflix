@@ -1,21 +1,37 @@
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "components/MovieCard";
-import { useEffect, useState } from "react";
+import Pagination from "components/Pagination";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoviesPage } from "types/moviesPage";
 import { SpringPage } from "types/vendor/spring";
 import { requestBackend } from "util/request";
 import "./styles.css";
 
+type ControlComponentData = {
+  activePage: number;
+};
+
 const Movies = () => {
   const [page, setPage] = useState<SpringPage<MoviesPage>>();
 
-  useEffect(() => {
+  const [controlComponentData, setControlComponentData] =
+    useState<ControlComponentData>({
+      activePage: 0,
+    });
+
+  const handlePageChange = (pageNumber: number) => {
+    setControlComponentData({
+      activePage: pageNumber
+    })
+  }
+
+  const getMovies = useCallback(() => {
     const params: AxiosRequestConfig = {
       url: "/movies",
       withCredentials: true,
       params: {
-        page: 0,
+        page: controlComponentData.activePage,
         size: 4,
       },
     };
@@ -24,7 +40,12 @@ const Movies = () => {
       setPage(response.data);
       console.log(response.data);
     });
-  }, []);
+  }, [controlComponentData]);
+
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
+
   return (
     <div className="movie-container-main">
       <div className="movie-container">
@@ -47,6 +68,12 @@ const Movies = () => {
           })}
         </div>
       </div>
+      <Pagination
+        forcePage={page?.number}
+        pageCount={page ? page.totalPages : 0}
+        range={3}
+        onChange={handlePageChange}
+      />
     </div>
   );
 };
