@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "components/MovieCard";
+import MovieFilter, { GenreFilterData } from "components/MovieFilter";
 import Pagination from "components/Pagination";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import "./styles.css";
 
 type ControlComponentData = {
   activePage: number;
+  filterData: GenreFilterData;
 };
 
 const Movies = () => {
@@ -18,12 +20,21 @@ const Movies = () => {
   const [controlComponentData, setControlComponentData] =
     useState<ControlComponentData>({
       activePage: 0,
+      filterData: {genre: null}
     });
 
   const handlePageChange = (pageNumber: number) => {
     setControlComponentData({
-      activePage: pageNumber
-    })
+      activePage: pageNumber,
+      filterData: controlComponentData.filterData
+    });
+  }
+
+  const handleSubmitGenre = (data: GenreFilterData) => {
+    setControlComponentData({
+      activePage: 0,
+      filterData: data
+    });
   }
 
   const getMovies = useCallback(() => {
@@ -33,6 +44,7 @@ const Movies = () => {
       params: {
         page: controlComponentData.activePage,
         size: 4,
+        genreId: controlComponentData.filterData.genre?.id
       },
     };
 
@@ -50,11 +62,7 @@ const Movies = () => {
     <div className="movie-container-main">
       <div className="movie-container">
         <div className="movie-filter">
-          <select>
-            <option value="Comédia">Comédia</option>
-            <option value="Comédia">Terror</option>
-            <option value="Comédia">Drama</option>
-          </select>
+          <MovieFilter onSubmitGenre={handleSubmitGenre} />
         </div>
         <div className="row">
           {page?.content.map((movie) => {
