@@ -28,7 +28,7 @@ public class MovieFullDTO {
 	
 	public MovieFullDTO(Movie entity) {
 		id = entity.getId();
-		title= entity.getSubTitle();
+		title= entity.getTitle();
 		subTitle = entity.getSubTitle();
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();

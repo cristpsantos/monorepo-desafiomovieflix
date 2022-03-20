@@ -7,6 +7,8 @@ import { hasAnyRoles } from "util/auth";
 import { requestBackend } from "util/request";
 import { ReactComponent as StarImage } from "assets/images/Star.svg";
 import "./styles.css";
+import { MoviesPage } from "types/moviesPage";
+import MovieCardDetails from "components/MovieCardDetails";
 
 type UrlParams = {
   movieId: string;
@@ -67,8 +69,9 @@ const MoviesReviews = () => {
   }, [reload, movieId]);
 
   return (
-    <div className="reviews-container">
-      <h1>Tela detalhes do filme id: {movieId}</h1>
+    <div className="reviews-container-main">
+      <div className="reviews-container">
+      <MovieCardDetails movieId={movieId}/>
       {hasAnyRoles(["ROLE_MEMBER"]) ? (
         <div className="card-newreviews">
           <form onSubmit={handleSubmit(onSubmit)} className="form-reviews">
@@ -106,6 +109,7 @@ const MoviesReviews = () => {
           </div>,
         ])}
       </div>
+    </div>
     </div>
   );
 };
