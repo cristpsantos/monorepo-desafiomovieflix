@@ -6,9 +6,11 @@ import { MovieReviewsPage } from "types/movieReviewsPage";
 import { hasAnyRoles } from "util/auth";
 import { requestBackend } from "util/request";
 import { ReactComponent as StarImage } from "assets/images/Star.svg";
-import "./styles.css";
-import { MoviesPage } from "types/moviesPage";
 import MovieCardDetails from "components/MovieCardDetails";
+import { toast } from 'react-toastify';
+
+import "./styles.css";
+
 
 type UrlParams = {
   movieId: string;
@@ -47,6 +49,9 @@ const MoviesReviews = () => {
     };
     console.log(params);
     requestBackend(params).then((response) => {
+      toast.success("Avaliação enviada com sucesso!", {
+        theme:"colored"
+      });
       if (reload === true) {
         setReload(false);
         setValue("text", "");
@@ -54,7 +59,12 @@ const MoviesReviews = () => {
         setReload(true);
         setValue("text", "");
       }
-    });
+    })
+      .catch((error) => {
+        toast.error("Erro ao enviar a avaliação!", {
+          theme: "colored"
+        });
+      });
   };
 
   useEffect(() => {
